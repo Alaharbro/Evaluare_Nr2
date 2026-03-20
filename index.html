@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Evaluare Nr.2 - Raport Git</title>
+
+<style>
+body {
+    background: #0c0c0c;
+    color: #33ff33;
+    font-family: Consolas, monospace;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #00bfff;
+}
+
+.terminal {
+    background: #000000;
+    border: 1px solid #444;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #000 inset;
+}
+
+.cmd {
+    margin: 2px 0;
+}
+
+.path {
+    color: #00bfff;
+}
+
+.comment {
+    color: #aaaaaa;
+    margin-bottom: 8px;
+}
+
+img {
+    width: 550px;
+    margin-top: 10px;
+    border: 1px solid #333;
+}
+.repo-link {
+    color: #33ff33;
+    text-decoration: none;
+}
+
+.repo-link:hover {
+    text-decoration: underline;
+    color: #00ff88;
+}
+#screens {
+    column-count: 4;        /* колонки */
+    column-gap: 15px;
+    padding: 10px;
+}
+
+#screens img {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #222;
+    display: block;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Raport Evaluare Nr.2 – Git & GitHub</h1>
+<p>Utilizator GitHub: <b>Sopu Liviu</b></p>
+
+<p>Repository: 
+<b>
+<a href="https://github.com/Alaharbro/Evaluare_Nr2" target="_blank" class="repo-link">
+https://github.com/Alaharbro/Evaluare_Nr2
+</a>
+</b>
+</p>
+
+<h2>I. COMMIT</h2>
+
+<div class="terminal">
+<p class="comment">Am creat repository-ul Evaluare_Nr2 pe GitHub și am inițializat proiectul local.</p>
+
+<p class="cmd">$ mkdir Evaluare_Nr2</p>
+<p class="cmd">$ cd Evaluare_Nr2</p>
+<p class="cmd">$ git init</p>
+
+<p class="comment">Am adăugat fișierul index.ev.2..html în repository.</p>
+
+<p class="cmd">$ touch index.ev.2..html</p>
+<p class="cmd">$ git add index.ev.2..html</p>
+<p class="cmd">$ git commit -m "Initial commit: Add index.ev.2..html"</p>
+
+<p class="comment">Am conectat repository-ul local la GitHub și am transferat modificările.</p>
+
+<p class="cmd">$ git remote add origin https://github.com/Alaharbro/Evaluare_Nr2.git</p>
+<p class="cmd">$ git push -u origin master</p>
+</div>
+
+<div class="terminal">
+<p class="comment">Am clonat repository-ul și am adăugat fișierul settings.xml.</p>
+
+<p class="cmd">$ git clone https://github.com/Alaharbro/Evaluare_Nr2.git</p>
+<p class="cmd">$ touch settings.xml</p>
+<p class="cmd">$ git add settings.xml</p>
+<p class="cmd">$ git commit -m "Commit file settings.xml"</p>
+
+<p class="comment">Am redenumit fișierul în configuration.xml și am făcut commit.</p>
+
+<p class="cmd">$ git mv settings.xml configuration.xml</p>
+<p class="cmd">$ git commit -m "Commit configuration.xml"</p>
+
+<p class="comment">Am modificat comentariul ultimului commit.</p>
+
+<p class="cmd">$ git commit --amend -m "Commit file configuration.xml"</p>
+
+<p class="comment">Am transferat toate modificările în repository-ul remote.</p>
+
+<p class="cmd">$ git push</p>
+</div>
+
+<h2>II. COMMIT</h2>
+
+<div class="terminal">
+<p class="comment">Am adăugat fișierul page1.html în repository-ul remote și am actualizat repository-ul local.</p>
+
+<p class="cmd">$ git pull origin master</p>
+
+<p class="comment">Am revenit la commit-ul „Commit file configuration.xml”.</p>
+
+<p class="cmd">$ git reset --hard [hash]</p>
+
+<p class="comment">Am sincronizat modificările cu repository-ul remote.</p>
+
+<p class="cmd">$ git push --force-with-lease</p>
+</div>
+
+<h2>I. BRANCH</h2>
+
+<div class="terminal">
+<p class="comment">Am creat branch-ul stage din master.</p>
+
+<p class="cmd">$ git checkout -b stage</p>
+<p class="cmd">$ git push -u origin stage</p>
+
+<p class="comment">Am creat fișierul hosts.xml și am făcut commit.</p>
+
+<p class="cmd">$ touch hosts.xml</p>
+<p class="cmd">$ git add hosts.xml</p>
+<p class="cmd">$ git commit -m "Commit file hosts.xml"</p>
+
+<p class="comment">Am adăugat modificările din stage în master.</p>
+
+<p class="cmd">$ git checkout master</p>
+<p class="cmd">$ git merge stage</p>
+<p class="cmd">$ git push origin master</p>
+</div>
+
+<h2>II. BRANCH</h2>
+
+<div class="terminal">
+<p class="comment">Am creat branch-ul dev din stage.</p>
+
+<p class="cmd">$ git checkout stage</p>
+<p class="cmd">$ git checkout -b dev</p>
+
+<p class="comment">Am creat fișierul env.txt și am făcut commit.</p>
+
+<p class="cmd">$ touch env.txt</p>
+<p class="cmd">$ git add env.txt</p>
+<p class="cmd">$ git commit -m "Commit file env.txt"</p>
+
+<p class="comment">Am adăugat modificările din dev în stage și le-am urcat pe remote.</p>
+
+<p class="cmd">$ git checkout stage</p>
+<p class="cmd">$ git merge dev</p>
+<p class="cmd">$ git push origin stage</p>
+</div>
+
+<h2>III. BRANCH</h2>
+
+<div class="terminal">
+<p class="comment">Am redenumit branch-ul dev în develop și am actualizat repository-ul remote.</p>
+
+<p class="cmd">$ git branch -m dev develop</p>
+<p class="cmd">$ git push origin develop</p>
+<p class="cmd">$ git push origin --delete dev</p>
+</div>
+
+<h2>Screenshot-urile confirmare: </h2>
+
+<div id="screens">
+    <img src="image/img1.png">
+    <img src="image/img2.png">
+    <img src="image/img3.png">
+    <img src="image/img4.png">
+    <img src="image/img5.png">
+    <img src="image/img6.png">
+    <img src="image/img7.png">
+    <img src="image/img8.png">
+    <img src="image/img9.png">
+    <img src="image/img10.png">
+    <img src="image/img11.png">
+</div>
+
+<script>
+let imgs = document.querySelectorAll("#screens img");
+document.getElementById("total").innerText = imgs.length;
+</script>
+
+<h2>Concluzie</h2>
+<p>
+În cadrul acestei lucrări am utilizat Git pentru gestionarea versiunilor, crearea și modificarea commit-urilor,
+lucrul cu branch-uri și sincronizarea cu repository-ul remote de pe GitHub.
+</p>
+
+</body>
+</html>
